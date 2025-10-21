@@ -1,0 +1,13 @@
+services:
+  starmap:
+    image: ghcr.io/andrewspangler/starmap:main
+    container_name: starmap
+    hostname: starmap
+    stop_signal: SIGINT
+    restart: unless-stopped
+    volumes:
+      - ./appdata/starmap:/config
+    environment:
+      PYTHONUNBUFFERED: 1
+    ports:
+      - 8080:80

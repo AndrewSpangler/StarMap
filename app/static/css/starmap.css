@@ -1,0 +1,239 @@
+body {
+  background-color: #111;
+  color: white;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  touch-action: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#mapContainer {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 90px);
+  border: 2px solid #444;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+}
+
+#mapContainer:active {
+  cursor: grabbing;
+}
+
+#starCanvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+#starsLayer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+}
+
+.star {
+  position: absolute;
+  font-size: 50px;
+  line-height: 50px;
+  color: #4da6ff;
+  pointer-events: auto;
+  cursor: pointer;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  touch-action: manipulation;
+}
+
+.star-label {
+  position: absolute;
+  top: 52px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ccc;
+  font-size: 24px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.tooltip-custom {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 11px;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.star-list-item {
+  padding: 8px;
+  margin-bottom: 4px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.star-list-item:hover {
+  background: #2a2a2a;
+  border-color: #4da6ff;
+}
+
+.star-list-item.active {
+  background: #2a4a6a;
+  border-color: #4da6ff;
+}
+
+.star-list-item .star-item-name {
+  font-weight: bold;
+  color: #4da6ff;
+  margin-bottom: 2px;
+}
+
+.star-list-item .star-item-coords {
+  font-size: 11px;
+  color: #888;
+}
+
+.jump-marker {
+  position: absolute;
+  pointer-events: none;
+  text-align: center;
+  z-index: 1000;
+}
+
+.jump-circle {
+  width: 60px;
+  height: 60px;
+  border: 3px solid #00bfff;
+  border-radius: 50%;
+  background: rgba(0, 191, 255, 0.1);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.jump-label {
+  margin-top: 5px;
+  color: #00bfff;
+  font-size: 20px;
+  font-weight: bold;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+  position: absolute;
+  bottom: 100%; /* place above the circle */
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  #mapContainer {
+    height: calc(100vh - 100px);
+  }
+  
+  .star {
+    font-size: 40px;
+    line-height: 40px;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .star-label {
+    font-size: 18px;
+    top: 42px;
+  }
+  
+  .star-list-item {
+    padding: 16px;
+    margin-bottom: 6px;
+  }
+  
+  .star-list-item .star-item-name {
+    font-size: 16px;
+  }
+  
+  .star-list-item .star-item-coords {
+    font-size: 13px;
+  }
+  
+  .card {
+    margin-bottom: 10px !important;
+  }
+  
+  .card-body {
+    padding: 10px !important;
+  }
+  
+  .form-control {
+    font-size: 16px !important;
+  }
+  
+  #starList {
+    max-height: 300px !important;
+  }
+  
+  .modal-body {
+    padding: 15px;
+  }
+  
+  .modal-body .form-control,
+  .modal-body textarea {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container-fluid {
+    padding: 5px !important;
+  }
+  
+  .card-header h5 {
+    font-size: 16px;
+  }
+  
+  .btn-sm {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+  
+  #mapContainer {
+    height: calc(100vh - 120px);
+    border-width: 1px;
+  }
+  
+  .star {
+    font-size: 35px;
+    line-height: 35px;
+    width: 35px;
+    height: 35px;
+  }
+  
+  .star-label {
+    font-size: 16px;
+    top: 37px;
+  }
+}
